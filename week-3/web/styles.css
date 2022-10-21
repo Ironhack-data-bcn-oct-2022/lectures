@@ -1,0 +1,13 @@
+body {
+  background-color: lightblue;
+}
+
+p {
+  color: red;
+}
+
+.something-random {
+  color: bisque;
+  font-weight: 700;
+  font-style: italic;
+}
