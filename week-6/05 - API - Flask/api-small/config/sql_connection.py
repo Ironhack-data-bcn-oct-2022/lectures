@@ -1,5 +1,7 @@
 import sqlalchemy as alch
 import os
+from dotenv import load_dotenv
+
 load_dotenv()
 
 dbName = "HP"
