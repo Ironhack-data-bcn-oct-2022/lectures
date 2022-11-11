@@ -1,7 +1,10 @@
 from flask import Flask, request, jsonify
 import random
+import numpy as np
 import markdown.extensions.fenced_code
 import tools.sql_queries as esecuele
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+sia = SentimentIntensityAnalyzer()
 
 
 app = Flask(__name__)
@@ -21,6 +24,13 @@ def sql ():
 @app.route("/sql/<name>", )
 def lines_from_characters (name):
     return jsonify(esecuele.get_everything_from_character(name))
+
+
+@app.route("/sa/<name>/", )
+def sa_from_character (name):
+    everything = esecuele.get_just_dialogue(name)
+    #return jsonify(everything)
+    return jsonify([sia.polarity_scores(i["dialogue"])["compound"] for i in everything])
 
 
 ####### POST

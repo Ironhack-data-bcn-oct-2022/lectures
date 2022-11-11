@@ -14,6 +14,14 @@ def get_everything_from_character (name):
     df = pd.read_sql_query(query, engine)
     return df.to_dict(orient="records")
 
+def get_just_dialogue (name):
+    query = f"""SELECT dialogue 
+    FROM users
+    WHERE character_name = '{name}';"""
+
+    df = pd.read_sql_query(query, engine)
+    return df.to_dict(orient="records")
+
 def insert_one_row (scene, character_name, dialogue):
     query = f"""INSERT INTO users
      (scene, character_name, dialogue) 
@@ -21,3 +29,5 @@ def insert_one_row (scene, character_name, dialogue):
     """
     engine.execute(query)
     return f"Correctly introduced!"
+
+
