@@ -1,0 +1,10 @@
+import sqlalchemy as alch
+import os
+load_dotenv()
+
+dbName = "HP"
+password=os.getenv("SQL")
+
+
+connectionData = f"mysql+pymysql://root:{password}@localhost/{dbName}"
+engine = alch.create_engine(connectionData)
