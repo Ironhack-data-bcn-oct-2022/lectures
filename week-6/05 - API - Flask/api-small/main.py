@@ -29,7 +29,6 @@ def lines_from_characters (name):
 @app.route("/sa/<name>/", )
 def sa_from_character (name):
     everything = esecuele.get_just_dialogue(name)
-    #return jsonify(everything)
     return jsonify([sia.polarity_scores(i["dialogue"])["compound"] for i in everything])
 
 
